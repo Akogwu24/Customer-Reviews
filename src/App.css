@@ -10,13 +10,13 @@
   }
 }
 
-@media (min-width: 1120px) {
+/* @media (min-width: 1120px) {
   .container {
     max-width: 50%;
   }
-}
+} */
 
-@media (min-width: 1240px) {
+@media (min-width: 1380px) {
   .container {
     max-width: 50%;
   }
