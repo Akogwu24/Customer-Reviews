@@ -45,6 +45,9 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
   },
+  refreshbtn: {
+    margin: '10px 15px',
+  },
 });
 
 const ReviewCard = () => {
@@ -53,12 +56,32 @@ const ReviewCard = () => {
   const [index, setIndex] = useState(0);
   const { name, image, job, text } = people[index];
 
-  const nextPerson = () => {
-    setIndex((index) => index + 1);
+  const checkNumber = (number) => {
+    if (number > people.length - 1) {
+      return 0;
+    } else if (number < 0) {
+      return people.length - 1;
+    }
+    return number;
   };
 
-  const previousPerson = (index) => {
-    setIndex((index) => index - 1);
+  const nextPerson = () => {
+    setIndex((index) => {
+      let newIndex = index + 1;
+      return checkNumber(newIndex);
+    });
+  };
+
+  const previousPerson = () => {
+    setIndex((index) => {
+      let newIndex = index - 1;
+      return checkNumber(newIndex);
+    });
+  };
+
+  const handleRandom = () => {
+    let randomIndex = Math.floor(Math.random() * 4);
+    setIndex(randomIndex);
   };
 
   return (
@@ -86,12 +109,13 @@ const ReviewCard = () => {
             </IconButton>
           </ButtonGroup>
           <Button
-            onClick={() => setIndex(0)}
+            className={classes.refreshbtn}
+            onClick={handleRandom}
             startIcon={<RefreshIcon />}
             variant='contained'
             color='primary'
           >
-            Refresh
+            Random Person
           </Button>
         </CardActions>
       </Card>
