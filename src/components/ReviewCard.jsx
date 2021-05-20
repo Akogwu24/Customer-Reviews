@@ -9,6 +9,7 @@ import {
   Typography,
   Button,
   ButtonGroup,
+  Container,
 } from '@material-ui/core';
 import people from '../data';
 import { makeStyles } from '@material-ui/core';
@@ -18,10 +19,19 @@ import RefreshIcon from '@material-ui/icons/Refresh';
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: '60%',
+    maxWidth: '100%',
     margin: '10px auto',
     textAlign: 'center',
   },
+  // container: {
+  //   width: '100vw',
+  //   height: '100vh',
+  //   display: 'flex',
+  //   flexDirection: 'column',
+  //   justifyContent: 'center',
+  //   alignItems: 'center',
+  // },
+
   media: {
     width: '150px',
     height: '150px',
@@ -85,7 +95,7 @@ const ReviewCard = () => {
   };
 
   return (
-    <div style={{ backgroundColor: 'green' }}>
+    <Container className='container'>
       <Card className={classes.root}>
         <CardMedia className={classes.media} image={image} title={name} />
         <CardContent>
@@ -119,7 +129,7 @@ const ReviewCard = () => {
           </Button>
         </CardActions>
       </Card>
-    </div>
+    </Container>
   );
 };
 
